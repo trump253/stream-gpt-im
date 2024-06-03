@@ -107,7 +107,7 @@ const mkHtml = computed(() => {
       }
 
       .msg-pop-primary {
-        background: #95ec69;
+        background: #00c4ff;
         // white-space: pre-line;
       }
     }
