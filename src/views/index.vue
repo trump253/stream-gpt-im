@@ -39,7 +39,16 @@
         class="ai-container"
         @dblclick="drawer = true"
     >
-      <img src="../assets/ai_assistant.png">
+      <el-popover
+          placement="left"
+          trigger="click"
+      >
+        <template #reference>
+          <img src="../assets/ai_assistant.png">
+        </template>
+        <h1>双击可弹出AI助手</h1>
+      </el-popover>
+
     </vue3-draggable-resizable>
   </draggable-container>
 
