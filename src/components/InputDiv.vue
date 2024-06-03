@@ -33,8 +33,6 @@ const handleInput = (e: Event) => {
 const handleKeydown = (e: Event) => {
   e.stopPropagation()
   e.returnValue = false
-  console.log("inputValue.value.trim(): " + inputValue.value.trim())
-  console.log("isStreaming.value: " + isStreaming.value)
   if (inputValue.value.trim() === '' || isStreaming.value) return
 
   emits('submit', inputValue.value.trim())
