@@ -1,3 +1,5 @@
+import config from "../config.ts";
+
 export class Typewriter {
   private queue: string[] = []
   private consuming = false
@@ -81,7 +83,12 @@ export class StreamGpt {
     this.onPatch = onPatch
     this.onDone = onDone
   }
-  async stream(prompt: string, history: GptMsgs = [], preset: GptMsgs = []) {
+  async stream(prompt: string, history: GptMsgs = [], preset: GptMsgs = [
+      {
+        role: 'system',
+        content: config.role
+      }
+  ]) {
     let finish = false
     let count = 0
     const _history = [...history]
@@ -112,10 +119,10 @@ export class StreamGpt {
     }
   }
   async fetch(messages: GptMsgs) {
-    return await fetch('https://api.openai.com/v1/chat/completions', {
+    return await fetch(config.url, {
       method: 'POST',
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: 'deepseek-chat',
         messages,
         stream: true
       }),

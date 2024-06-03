@@ -7,7 +7,7 @@ export const useGpt = (key: string, history: boolean = false) => {
   const msgList = ref<GptMsgs>([])
   const typewriter = new Typewriter((str: string) => {
     streamingText.value += str || ''
-    console.log('str', str)
+    // console.log('str', str)
   })
   const gpt = new StreamGpt(key, {
     onStart: (prompt: string) => {
@@ -18,7 +18,7 @@ export const useGpt = (key: string, history: boolean = false) => {
       })
     },
     onPatch: (text: string) => {
-      console.log('onPatch', text)
+      // console.log('onPatch', text)
       typewriter.add(text)
     },
     onCreated: () => {

@@ -32,9 +32,9 @@ const handleInput = (e: Event) => {
 const handleKeydown = (e: Event) => {
   e.stopPropagation()
   e.returnValue = false
-  if (inputValue.value === '') return
+  if (inputValue.value.trim() === '') return
 
-  emits('submit', inputValue.value)
+  emits('submit', inputValue.value.trim())
   inputValue.value = ''
 }
 const inputDiv = ref()
