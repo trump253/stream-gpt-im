@@ -24,6 +24,7 @@ const handlePaste = function (e: ClipboardEvent) {
 }
 const inputValue = ref('')
 const emits = defineEmits(['submit'])
+const isStreaming = defineModel('isStreaming');
 const handleInput = (e: Event) => {
   const _evnet = e as InputEvent
   const target = _evnet.target as HTMLElement
@@ -32,7 +33,9 @@ const handleInput = (e: Event) => {
 const handleKeydown = (e: Event) => {
   e.stopPropagation()
   e.returnValue = false
-  if (inputValue.value.trim() === '') return
+  console.log("inputValue.value.trim(): " + inputValue.value.trim())
+  console.log("isStreaming.value: " + isStreaming.value)
+  if (inputValue.value.trim() === '' || isStreaming.value) return
 
   emits('submit', inputValue.value.trim())
   inputValue.value = ''

@@ -19,7 +19,7 @@
     </template>
     <template #footer>
       <div class="input">
-        <InputDiv v-model:value="inputValue" @submit="handleSubmit"></InputDiv>
+        <InputDiv v-model:value="inputValue" @submit="handleSubmit" v-model:isStreaming="streaming"></InputDiv>
       </div>
     </template>
   </el-drawer>
@@ -63,8 +63,8 @@ const drawer = ref(false)
 
 const top = ref(0)
 const left = ref(0)
-const w = ref(60)
-const h = ref(60)
+const w = ref(80)
+const h = ref(80)
 const active = ref(true)
 
 const inputValue = ref('')
@@ -82,8 +82,11 @@ watch(streamingText, (val) => {
   }
 })
 const handleSubmit = (content: string) => {
-  if (content === '') return
-  stream(content)
+  console.log('submit', content)
+  console.log('streaming', streaming.value)
+  if (content.trim() === '' || streaming.value) return false;
+  stream(content);
+  return true;
 }
 </script>
 <style lang="scss" scoped>

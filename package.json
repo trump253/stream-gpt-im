@@ -12,7 +12,7 @@
     "element-plus": "^2.7.4",
     "highlight.js": "^11.8.0",
     "markdown-it": "^14.1.0",
-    "vue": "^3.2.47",
+    "vue": "^3.4.21",
     "vue3-draggable-resizable": "^1.6.5"
   },
   "devDependencies": {
