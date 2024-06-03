@@ -77,16 +77,17 @@ defineExpose({
 
   .msg-editor {
     width: 100%;
-    min-height: 25px;
+    min-height: 2vh;
     white-space: pre-wrap;
     word-break: break-all;
+    // 上下居中
+    line-height: 1.5;
   }
 
   .msg-editor:empty:before {
     content: attr(placeholder);
     color: #8f959e;
     cursor: text;
-    margin-left: 3px;
   }
 }
 </style>

@@ -77,7 +77,7 @@ const mkHtml = computed(() => {
 <style lang="scss" scoped>
 .msg-item {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 1.2vh;
   display: flex;
   // padding: 0 24px;
 
@@ -85,16 +85,17 @@ const mkHtml = computed(() => {
     position: relative;
     width: 100%;
     flex: 1 1 auto;
+    line-height: 1.5;
 
     .msg-pop-container {
       position: relative;
       display: inline-block;
-      max-width: 95%;
+      max-width: 100%;
 
       .msg-pop-default {
         width: 100%;
         display: inline-block;
-        padding: 8px;
+        padding: 1.3vh;
         background: #fff;
         border-radius: 4px;
         color: #252724;

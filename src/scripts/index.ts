@@ -122,7 +122,7 @@ export class StreamGpt {
     return await fetch(config.url, {
       method: 'POST',
       body: JSON.stringify({
-        model: 'deepseek-chat',
+        model: config.modelName,
         messages,
         stream: true
       }),

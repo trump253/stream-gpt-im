@@ -1,45 +1,47 @@
 <template>
-    <el-drawer
-        v-model="drawer"
-        :modal="false"
-        :close-on-click-modal="false"
-        size="25%"
-    >
-      <template #header>
-        <span class="ai-title">智网优评——智能AI助手</span>
-      </template>
-      <template #default>
-        <div class="container">
-          <div class="msg" ref="listEl">
-            <Msg v-for="(msg, index) in msgList" :role="msg.role" :x="left" :y="top" :content="msg.content"
-                 :key="index"></Msg>
-            <Msg v-if="streaming" role="system" :content="streamingText" :streaming="true"></Msg>
-          </div>
-        </div>
-      </template>
-      <template #footer>
-        <div class="input">
-          <InputDiv v-model:value="inputValue" @submit="handleSubmit"></InputDiv>
-        </div>
-      </template>
-    </el-drawer>
-
-  <vue3-draggable-resizable
-      :initW="w"
-      :initH="h"
-      v-model:x="top"
-      v-model:y="left"
-      v-model:w="w"
-      v-model:h="h"
-      v-model:active="active"
-      :parent="true"
-      :draggable="true"
-      :resizable="false"
-      class="ai-container"
-      @dblclick="drawer = true"
+  <el-drawer
+      v-model="drawer"
+      :modal="true"
+      :close-on-click-modal="true"
+      size="25%"
   >
-    AI
-  </vue3-draggable-resizable>
+    <template #header>
+      <span class="ai-title">智网优评——智能AI助手</span>
+    </template>
+    <template #default>
+      <div class="container">
+        <div class="msg" ref="listEl">
+          <Msg v-for="(msg, index) in msgList" :role="msg.role" :x="left" :y="top" :content="msg.content"
+               :key="index"></Msg>
+          <Msg v-if="streaming" role="system" :content="streamingText" :streaming="true"></Msg>
+        </div>
+      </div>
+    </template>
+    <template #footer>
+      <div class="input">
+        <InputDiv v-model:value="inputValue" @submit="handleSubmit"></InputDiv>
+      </div>
+    </template>
+  </el-drawer>
+
+  <draggable-container :disabled="true">
+    <vue3-draggable-resizable
+        :initW="w"
+        :initH="h"
+        v-model:x="top"
+        v-model:y="left"
+        v-model:w="w"
+        v-model:h="h"
+        v-model:active="active"
+        :parent="true"
+        :draggable="true"
+        :resizable="false"
+        class="ai-container"
+        @dblclick="drawer = true"
+    >
+      <img src="../assets/ai_assistant.png">
+    </vue3-draggable-resizable>
+  </draggable-container>
 
 </template>
 <script lang="ts" setup>
@@ -50,6 +52,7 @@ import {useScroll} from '@vueuse/core'
 import {useGpt} from '../hooks/useGpt'
 import config from '../config'
 import Vue3DraggableResizable from "vue3-draggable-resizable";
+import {DraggableContainer} from 'vue3-draggable-resizable'
 
 interface Msg {
   role: string
@@ -86,9 +89,9 @@ const handleSubmit = (content: string) => {
 <style lang="scss" scoped>
 .input {
   width: 100%;
-  //max-height: 20vh;
-  min-height: 7vh;
+  min-height: 6vh;
   overflow-y: auto;
+  text-align: left;
 }
 
 .ai-title {
@@ -115,7 +118,7 @@ const handleSubmit = (content: string) => {
 }
 
 .ai-container {
-  background-color: red;
+  //background-color: #629eff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
