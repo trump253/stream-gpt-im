@@ -5,7 +5,6 @@ import Index from './views/index.vue'
 <template>
   <div class="app">
     <Index></Index>
-<!--    <test></test>-->
   </div>
 </template>
 
