@@ -56,7 +56,7 @@ defineExpose({
 <style lang="scss" scoped>
 .msg-editor-container {
   height: 100%;
-  max-height: 350px;
+  max-height: 15vh;
   overflow-y: auto;
   position: relative;
   padding: 5px;
